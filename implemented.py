@@ -5,9 +5,9 @@ from app.dao.movie_dao import MovieDAO
 from app.dao.user_dao import UserDAO
 from app.services.auth_service import AuthService
 from app.services.favorite_service import FavoriteService
-from app.services.movies_service import MovieService
-from app.services.directors_service import DirectorService
-from app.services.genres_service import GenreService
+from app.services.movie_service import MovieService
+from app.services.director_service import DirectorService
+from app.services.genre_service import GenreService
 from app.services.user_service import UserService
 from setup_db import db
 
