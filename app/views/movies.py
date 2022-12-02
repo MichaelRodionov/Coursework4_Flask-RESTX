@@ -17,7 +17,7 @@ movies_schema = MovieSchema(many=True)
 @movie_ns.route('/')
 class MoviesView(Resource):
     @staticmethod
-    # @auth_required
+    @auth_required
     def get():
         """This view returns all movies by pages or sort movies by director/genre/year by GET request"""
         return movies_schema.dump(movie_service.get_movies()), 200
@@ -26,7 +26,7 @@ class MoviesView(Resource):
 @movie_ns.route('/<int:movie_id>')
 class MovieView(Resource):
     @staticmethod
-    # @auth_required
+    @auth_required
     def get(movie_id):
         """This view return one movie filtered by movie_id by GET request"""
         movie = movie_service.get_one_movie(movie_id)

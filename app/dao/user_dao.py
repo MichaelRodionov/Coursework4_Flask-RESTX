@@ -7,20 +7,13 @@ class UserDAO:
     def __init__(self, session):
         self.session = session
 
-    def get_user_page(self, uid):
+    def get_user_page(self, uemail):
         """
         This method is needed to query available user info from database
-        :param uid:
+        :param uemail:
         :return: User with name, surname, email, favorite_genre attributes
         """
-        return self.session.query(User.name, User.surname, User.email, User.favorite_genre).filter(User.id == uid).first()
-
-    def get_user_by_id(self, uid):
-        """
-        This method is needed to filter user by uid from token
-        :return: user object
-        """
-        return self.session.query(User).filter(User.id == uid).first()
+        return self.session.query(User.name, User.surname, User.email, User.favorite_genre).filter(User.email == uemail).first()
 
     def get_user_by_email(self, email):
         """

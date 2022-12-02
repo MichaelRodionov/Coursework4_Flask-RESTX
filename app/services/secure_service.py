@@ -31,15 +31,19 @@ class SecureService:
         ))
 
     @staticmethod
-    def get_id_from_token() -> int:
+    def get_email_or_id_from_token(is_id=False, is_email=False) -> str:
         """Method to get user id from token"""
         if 'Authorization' not in request.headers:
             abort(401)
         token = request.headers['Authorization'].split('Bearer ')[-1]
         try:
             user_data = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
-            uid = user_data.get('id')
-            return uid
+            if not is_email:
+                uid = user_data.get('id')
+                return uid
+            if not is_id:
+                uemail = user_data.get('email')
+                return uemail
         except Exception as e:
             print('JWT Decode Error: ', e)
             abort(401)

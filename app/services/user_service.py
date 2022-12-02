@@ -19,8 +19,8 @@ class UserService:
         Method to get user data with available attributes
         :return: User with available attributes
         """
-        user_id = secure_service.get_id_from_token()
-        return self.user_dao.get_user_page(user_id)
+        user_email = secure_service.get_email_or_id_from_token(is_email=True)
+        return self.user_dao.get_user_page(user_email)
 
     def create_user(self, data: dict):
         """
@@ -29,14 +29,6 @@ class UserService:
         :return: None
         """
         return self.user_dao.create_user(data)
-
-    def get_user_by_id(self, uid: int):
-        """
-        Method to filter user by user_id (uid)
-        :param uid: user id
-        :return: User filtered by user_id
-        """
-        return self.user_dao.get_user_by_id(uid)
 
     def get_user_by_email(self, email: str):
         """
@@ -52,7 +44,7 @@ class UserService:
         :param data: dict with name/surname/favorite_genre
         :return: None
         """
-        user = self.user_dao.get_user_by_id(secure_service.get_id_from_token())
+        user = self.user_dao.get_user_by_email(secure_service.get_email_or_id_from_token(is_email=True))
         if "name" in data:
             user.name = data.get("name")
         if "surname" in data:
@@ -68,7 +60,7 @@ class UserService:
         :return: None
         """
         password_1, password_2 = passwords.get("password_1"), passwords.get("password_2")
-        user = self.get_user_by_id(secure_service.get_id_from_token())
+        user = self.get_user_by_email(secure_service.get_email_or_id_from_token(is_email=True))
         if not secure_service.compare_passwords(user.password, password_1):
             return "Incorrect password", 400
         user.password = secure_service.make_user_password_hash(password_2)
