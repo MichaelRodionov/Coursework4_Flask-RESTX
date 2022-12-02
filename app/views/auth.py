@@ -28,14 +28,13 @@ class AuthViewsRegister(Resource):
 @auth_ns.route('/login')
 class AuthViewsLogin(Resource):
     @staticmethod
-    def post() -> str:
+    def post() -> str or dict:
         """This view is needed to users log in"""
         data = request.json
         email, password = data.get('email'), data.get('password')
         if None in [email, password]:
             return "", 400
-        auth_service.generate_tokens(email, password)
-        return "", 201
+        return auth_service.generate_tokens(email, password), 201
 
     @staticmethod
     @auth_required
