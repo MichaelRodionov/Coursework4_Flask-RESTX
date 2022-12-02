@@ -9,15 +9,15 @@ class GenreDAO:
 
     def get_all_genres(self):
         """
-        This function is called to query all genres from database
+        Method to query all genres from database
         :return: all genres to GenreService
         """
         genres = self.session.query(Genre).all()
         return genres
 
-    def get_genre_by_id(self, genre_id):
+    def get_genre_by_id(self, genre_id: int):
         """
-        This function is called to query genre from database by genre id
+        Method to query genre from database by genre id
         :param genre_id:
         :return: genre by genre id to GenreService
         """

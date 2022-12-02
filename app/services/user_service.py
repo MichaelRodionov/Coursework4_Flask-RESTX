@@ -22,13 +22,13 @@ class UserService:
         user_email = secure_service.get_email_or_id_from_token(is_email=True)
         return self.user_dao.get_user_page(user_email)
 
-    def create_user(self, data: dict):
+    def create_user(self, data: dict) -> None:
         """
         Method to create new user
         :param data: dict with name, surname, email, password, favorite_genre
         :return: None
         """
-        return self.user_dao.create_user(data)
+        self.user_dao.create_user(data)
 
     def get_user_by_email(self, email: str):
         """
@@ -38,7 +38,7 @@ class UserService:
         """
         return self.user_dao.get_user_by_email(email)
 
-    def update_user(self, data: dict):
+    def update_user(self, data: dict) -> None:
         """
         Method to update user info such as name, surname, favorite_genre
         :param data: dict with name/surname/favorite_genre
@@ -51,9 +51,9 @@ class UserService:
             user.surname = data.get("surname")
         if "favorite_genre" in data:
             user.favorite_genre = data.get("favorite_genre")
-        return self.user_dao.update_user(user)
+        self.user_dao.update_user(user)
 
-    def update_password(self, passwords: dict):
+    def update_password(self, passwords: dict) -> str or None:
         """
         Method to update user password
         :param passwords:
@@ -64,4 +64,4 @@ class UserService:
         if not secure_service.compare_passwords(user.password, password_1):
             return "Incorrect password", 400
         user.password = secure_service.make_user_password_hash(password_2)
-        return self.user_dao.update_user(user)
+        self.user_dao.update_user(user)

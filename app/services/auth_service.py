@@ -15,11 +15,23 @@ class AuthService:
         self.user_service = user_service
 
     @staticmethod
-    def convert_user_password_to_hash(data):
+    def convert_user_password_to_hash(data) -> dict:
+        """
+        Method to  convert str password to hash password
+        :param data: dict with email and password
+        :return:
+        """
         data['password'] = secure_service.make_user_password_hash(data.get('password'))
         return data
 
-    def generate_tokens(self, email, password, is_refresh=False):
+    def generate_tokens(self, email, password, is_refresh=False) -> dict:
+        """
+        Method to generate tokens
+        :param email: user email
+        :param password: user password
+        :param is_refresh: true or false
+        :return: two tokens
+        """
         user = self.user_service.get_user_by_email(email)
         if user is None:
             abort(404)
@@ -43,7 +55,12 @@ class AuthService:
             'refresh_token': refresh_token
         }
 
-    def approve_refresh_token(self, refresh_token):
+    def approve_refresh_token(self, refresh_token) -> dict:
+        """
+        Method to approve refresh token
+        :param refresh_token:
+        :return: new two tokens
+        """
         data = jwt.decode(refresh_token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
         email = data.get('email')
         return self.generate_tokens(email, None, is_refresh=True)

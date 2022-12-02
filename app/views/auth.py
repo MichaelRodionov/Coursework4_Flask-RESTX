@@ -14,12 +14,13 @@ auth_ns = Namespace('auth')
 @auth_ns.route('/register')
 class AuthViewsRegister(Resource):
     @staticmethod
-    def post():
+    def post() -> str:
         """This view is needed to register user in system"""
         try:
             data = request.json
             user = auth_service.convert_user_password_to_hash(data)
-            return user_service.create_user(user), 201
+            user_service.create_user(user)
+            return "", 201
         except Exception:
             return 'user with this email address is already exists'
 
@@ -27,16 +28,18 @@ class AuthViewsRegister(Resource):
 @auth_ns.route('/login')
 class AuthViewsLogin(Resource):
     @staticmethod
-    def post():
+    def post() -> str:
+        """This view is needed to users log in"""
         data = request.json
         email, password = data.get('email'), data.get('password')
         if None in [email, password]:
             return "", 400
-        return auth_service.generate_tokens(email, password), 201
+        auth_service.generate_tokens(email, password)
+        return "", 201
 
     @staticmethod
     @auth_required
-    def put():
+    def put() -> dict:
         """This view is needed to update tokens"""
         data = request.json
         token = data.get('refresh_token')

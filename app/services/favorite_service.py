@@ -10,7 +10,7 @@ class FavoriteService:
 
     def get_favorites(self) -> list[dict]:
         """
-        This method is called to get user_id from token send it to favorite dao
+        Method to get user_id from token and send it to favorite dao
         :return: list of favorite movies filtered by user id
         """
         user_id = secure_service.get_email_or_id_from_token(is_id=True)
@@ -18,7 +18,7 @@ class FavoriteService:
 
     def add_movie_to_favorite(self, mid: int) -> None:
         """
-        This method is called to get user_id from token and add favorite movie to this user
+        Method to get user_id from token and add favorite movie to this user
         :param mid: movie id
         :return: None
         """
@@ -31,7 +31,7 @@ class FavoriteService:
 
     def remove_movie_from_favorite(self, mid: int) -> None:
         """
-        This method is called to get user_id from token and delete movie from users favorites
+        Method to get user_id from token and delete movie from users favorites
         :param mid: movie id
         :return: None
         """

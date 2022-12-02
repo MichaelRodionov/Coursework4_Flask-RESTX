@@ -12,7 +12,7 @@ class MovieDAO:
 
     def get_all_movies(self, director_id=None, genre_id=None, year=0, page=None, status=None):
         """
-        This method is called to query all movies or movies sorted by Director or/and Genre
+        Method to query all movies or movies sorted by Director or/and Genre
         :return: all movies or movies sorted by director/genre/year to MovieService
         """
         movies_query = self.session.query(Movie)
@@ -29,9 +29,9 @@ class MovieDAO:
                 movies_query = movies_query.limit(LIMIT_VALUE).offset(OFFSET_VALUE * (int(page) - 1))
         return movies_query.all()
 
-    def get_movie_by_id(self, movie_id):
+    def get_movie_by_id(self, movie_id: int):
         """
-        This method is called to query movie from database by movie_id
+        Method to query movie from database by movie_id
         :param movie_id:
         :return: return movie by movie_id to MovieService
         """

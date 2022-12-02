@@ -9,15 +9,15 @@ class DirectorDAO:
 
     def get_all_directors(self):
         """
-        This function is called to query all directors from database
+        Method to query all directors from database
         :return: all directors to DirectorService
         """
         directors = self.session.query(Director).all()
         return directors
 
-    def get_director_by_id(self, director_id):
+    def get_director_by_id(self, director_id: int):
         """
-        This function is called to query director from database by director id
+        Method to query director from database by director id
         :param director_id:
         :return: director by director id to DirectorService
         """

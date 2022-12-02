@@ -12,13 +12,16 @@ from app.services.user_service import UserService
 from setup_db import db
 
 # ----------------------------------------------------------------
-# creating objects of dao and services
+# creating objects of dao
 movie_dao = MovieDAO(db.session)
 director_dao = DirectorDAO(db.session)
 genre_dao = GenreDAO(db.session)
 user_dao = UserDAO(db.session)
 user_movie_dao = FavoriteDAO(db.session)
 
+
+# ----------------------------------------------------------------
+# creating objects of services
 movie_service = MovieService(movie_dao)
 director_service = DirectorService(director_dao)
 genre_service = GenreService(genre_dao)

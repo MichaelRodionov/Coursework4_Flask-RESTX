@@ -17,7 +17,7 @@ genres_schema = GenreSchema(many=True)
 @genre_ns.route('/')
 class GenresView(Resource):
     @staticmethod
-    # @auth_required
+    @auth_required
     def get():
         """This view return all genres by GET request"""
         return genres_schema.dump(genre_service.get_genres()), 200
@@ -26,7 +26,7 @@ class GenresView(Resource):
 @genre_ns.route('/<int:genre_id>')
 class GenreView(Resource):
     @staticmethod
-    # @auth_required
+    @auth_required
     def get(genre_id):
         """This view return one genre filtered by genre_id by GET request"""
         return genre_schema.dump(genre_service.get_genre(genre_id)), 200

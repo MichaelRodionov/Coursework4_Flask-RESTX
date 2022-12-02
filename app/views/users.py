@@ -18,20 +18,22 @@ user_schema = UserSchema()
 class UserView(Resource):
     @staticmethod
     @auth_required
-    def get():
+    def get() -> dict:
         """This view is needed to get user page with available attributes"""
         return user_schema.dump(user_service.get_user_page()), 200
 
     @staticmethod
     @auth_required
-    def patch():
+    def patch() -> None:
         """This view is needed to update user info, such as name, surname, favorite genre"""
         data = request.json
-        return user_service.update_user(data), 204
+        user_service.update_user(data)
+        return "", 204
 
     @staticmethod
     @auth_required
-    def put():
+    def put() -> None:
         """This view is needed to update user password"""
         passwords = request.json
-        return user_service.update_password(passwords)
+        user_service.update_password(passwords)
+        return "", 204

@@ -18,7 +18,7 @@ movies_schema = MovieSchema(many=True)
 class MoviesView(Resource):
     @staticmethod
     @auth_required
-    def get():
+    def get() -> list[dict]:
         """This view returns all movies by pages or sort movies by director/genre/year by GET request"""
         return movies_schema.dump(movie_service.get_movies()), 200
 
@@ -27,7 +27,7 @@ class MoviesView(Resource):
 class MovieView(Resource):
     @staticmethod
     @auth_required
-    def get(movie_id):
+    def get(movie_id) -> dict:
         """This view return one movie filtered by movie_id by GET request"""
         movie = movie_service.get_one_movie(movie_id)
         if not movie:
