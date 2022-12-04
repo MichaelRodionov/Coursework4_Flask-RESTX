@@ -4,7 +4,7 @@ import hmac
 import jwt
 from flask import abort, request
 
-from constants import HASH_ALGORITHM, PWD_ENCODE, PWD_SALT, PWD_ITERATIONS, JWT_SECRET, JWT_ALGORITHM
+from configuration.constants import HASH_ALGORITHM, PWD_ENCODE, PWD_SALT, PWD_ITERATIONS, JWT_SECRET, JWT_ALGORITHM
 
 
 # ----------------------------------------------------------------

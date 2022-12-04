@@ -2,9 +2,9 @@ from flask import request
 from flask_restx import Resource, Namespace
 
 from app.dao.models.models import MovieSchema
-from constants import DOC_PARAMS
-from helpers import auth_required
-from implemented import movie_service
+from configuration.constants import DOC_PARAMS
+from configuration.auth_util import auth_required
+from configuration.implemented import movie_service
 
 
 # ----------------------------------------------------------------

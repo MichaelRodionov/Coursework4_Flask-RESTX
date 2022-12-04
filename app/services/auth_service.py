@@ -4,7 +4,7 @@ import datetime
 import jwt
 
 from app.services.user_service import UserService
-from constants import JWT_SECRET, JWT_ALGORITHM
+from configuration.constants import JWT_SECRET, JWT_ALGORITHM
 from app.services.user_service import secure_service
 
 

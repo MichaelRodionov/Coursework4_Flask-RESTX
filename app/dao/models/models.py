@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields
 
-from setup_db import db
+from database.setup_db import db
 
 
 # ----------------------------------------------------------------

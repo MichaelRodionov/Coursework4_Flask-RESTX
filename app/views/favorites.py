@@ -1,10 +1,8 @@
-from http.client import responses
-
 from flask_restx import Resource, Namespace
 
 from app.views.movies import movies_schema
-from helpers import auth_required
-from implemented import favorite_service
+from configuration.auth_util import auth_required
+from configuration.implemented import favorite_service
 
 
 # ----------------------------------------------------------------

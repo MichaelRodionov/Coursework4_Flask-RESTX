@@ -2,8 +2,8 @@ from flask import request
 from flask_restx import Resource, Namespace
 
 from app.dao.models.models import DirectorSchema
-from helpers import auth_required
-from implemented import director_service
+from configuration.auth_util import auth_required
+from configuration.implemented import director_service
 
 
 # ----------------------------------------------------------------

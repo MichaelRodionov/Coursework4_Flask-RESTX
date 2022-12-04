@@ -3,8 +3,8 @@ from flask_restx import Api
 from flask_cors import CORS
 
 from app.views.favorites import fav_ns
-from config import Config
-from setup_db import db
+from configuration.config import Config
+from database.setup_db import db
 from app.views.auth import auth_ns
 from app.views.directors import director_ns
 from app.views.genres import genre_ns

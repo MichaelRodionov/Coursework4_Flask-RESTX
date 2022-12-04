@@ -21,7 +21,7 @@ class UserService:
 
     def get_user_page(self) -> User:
         """
-        Method to get user data with available attributes
+        Method to get user database with available attributes
         :return: User object with available attributes
         """
         user_email = secure_service.get_email_or_id_from_token(is_email=True)

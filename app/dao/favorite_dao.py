@@ -19,7 +19,7 @@ class FavoriteDAO:
     def add_favorite_movie(self, data: dict) -> None:
         """
         Method to add a new movie to favorites
-        :param data: user id and movie id data
+        :param data: user id and movie id database
         :return: None
         """
         new_favorite = Favorite(**data)

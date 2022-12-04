@@ -1,7 +1,7 @@
 import jwt
 from flask import request, abort
 
-from constants import JWT_SECRET, JWT_ALGORITHM
+from configuration.constants import JWT_SECRET, JWT_ALGORITHM
 
 
 # ----------------------------------------------------------------

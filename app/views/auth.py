@@ -1,8 +1,8 @@
 from flask import request
 from flask_restx import Resource, Namespace
 
-from helpers import auth_required
-from implemented import auth_service, user_service
+from configuration.auth_util import auth_required
+from configuration.implemented import auth_service, user_service
 
 # ----------------------------------------------------------------
 # create namespace

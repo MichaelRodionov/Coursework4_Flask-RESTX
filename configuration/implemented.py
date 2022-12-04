@@ -9,7 +9,7 @@ from app.services.movie_service import MovieService
 from app.services.director_service import DirectorService
 from app.services.genre_service import GenreService
 from app.services.user_service import UserService
-from setup_db import db
+from database.setup_db import db
 
 # ----------------------------------------------------------------
 # creating objects of dao

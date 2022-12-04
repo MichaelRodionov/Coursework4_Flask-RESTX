@@ -1,7 +1,7 @@
 from app.dao.models.models import Movie, Genre, Director, User
 
 # ----------------------------------------------------------------
-# Movies data
+# Movies database
 ALL_MOVIES = [
     Movie(
         id=1,
@@ -48,7 +48,7 @@ MOVIE_BY_ID = Movie(
 
 ADD_NEW_MOVIE = Movie(id=4)
 # ----------------------------------------------------------------
-# Genres data
+# Genres database
 ALL_GENRES = [
     Genre(
         id=1,
@@ -69,7 +69,7 @@ GENRE_BY_ID = Genre(
     name='test_genre_1'
 )
 # ----------------------------------------------------------------
-# Directors data
+# Directors database
 ALL_DIRECTORS = [
     Director(
         id=1,
@@ -91,7 +91,7 @@ DIRECTOR_BY_ID = Director(
 )
 
 # ----------------------------------------------------------------
-# Users data
+# Users database
 USER_PAGE = User(
     name='test_user_name',
     surname='test_user_surname',
@@ -111,12 +111,12 @@ USER_BY_EMAIL = User(
 )
 
 # ----------------------------------------------------------------
-# secure data
+# secure database
 TEST_PASSWORD = 'Qwerty12!'
 TEST_PASSWORD_HASH = b'WD5xanKSokDvAta3wFNBofA/wIKNMwaLNpg08tYTRwM='
 
 # ----------------------------------------------------------------
-# auth data
+# auth database
 AUTH_DATA = {
     'email': 'test_email@mail.ru',
     'password': 'Qwerty12!'

@@ -1,5 +1,5 @@
 from app.dao.models.models import Genre
-from constants import LIMIT_VALUE, OFFSET_VALUE
+from configuration.constants import LIMIT_VALUE, OFFSET_VALUE
 
 
 # ----------------------------------------------------------------

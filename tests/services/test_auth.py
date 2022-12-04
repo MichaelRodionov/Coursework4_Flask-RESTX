@@ -1,7 +1,7 @@
 import pytest
 
 from app.services.auth_service import AuthService
-from implemented import user_service
+from configuration.implemented import user_service
 from tests.conftest.test_data import AUTH_DATA, TEST_PASSWORD_HASH
 
 

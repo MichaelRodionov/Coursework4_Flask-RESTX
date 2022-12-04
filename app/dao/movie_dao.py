@@ -1,6 +1,6 @@
 from sqlalchemy import desc
 
-from constants import LIMIT_VALUE, OFFSET_VALUE
+from configuration.constants import LIMIT_VALUE, OFFSET_VALUE
 from app.dao.models.models import Movie
 
 
