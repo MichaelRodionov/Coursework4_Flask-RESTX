@@ -5,9 +5,14 @@ from configuration.implemented import user_service
 from tests.conftest.test_data import AUTH_DATA, TEST_PASSWORD_HASH
 
 
+# ----------------------------------------------------------------
+# test class of auth service
 class TestAuthService:
     @pytest.fixture(autouse=True)
     def auth_service(self):
+        """
+        Create an object of AuthService
+        """
         self.auth_service = AuthService(user_service)
 
     def test_convert_user_password_to_hash(self, data=AUTH_DATA):
