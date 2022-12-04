@@ -21,7 +21,7 @@ class MoviesView(Resource):
     @staticmethod
     @movie_ns.doc(description='Get all movies', params=DOC_PARAMS, responses={200: 'OK', 401: 'Unauthorized'})
     @auth_required
-    def get() -> list[dict]:
+    def get() -> list:
         """This view returns all movies by pages or sort movies by director/genre/year by GET request"""
         filter_params = {
             "director_id": request.args.get('director_id'),
