@@ -1,3 +1,5 @@
+from http.client import responses
+
 from flask_restx import Resource, Namespace
 
 from app.views.movies import movies_schema
@@ -15,6 +17,7 @@ fav_ns = Namespace('favorites/movies')
 @fav_ns.route('/')
 class FavoritesViews(Resource):
     @staticmethod
+    @fav_ns.doc(description='Get users favorite movies', responses={200: 'OK', 401: 'Unauthorized'})
     @auth_required
     def get() -> list[dict]:
         """This view is needed to get all users favorites"""
@@ -24,6 +27,7 @@ class FavoritesViews(Resource):
 @fav_ns.route('/<int:mid>')
 class FavoriteViews(Resource):
     @staticmethod
+    @fav_ns.doc(description='Add movie to users favorites', params={'mid': 'Movie ID'}, responses={201: 'No Content', 401: 'Unauthorized'})
     @auth_required
     def post(mid) -> str:
         """This view is needed to add movie by movie id to favorites"""
@@ -31,6 +35,7 @@ class FavoriteViews(Resource):
         return "", 201
 
     @staticmethod
+    @fav_ns.doc(description='Delete movie from favorites', params={'mid': 'Movie ID'}, responses={204: 'No Content', 401: 'Unauthorized'})
     @auth_required
     def delete(mid) -> str:
         """This view is needed to remove movie by movie id from favorites"""

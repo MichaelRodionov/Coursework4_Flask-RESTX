@@ -15,7 +15,7 @@ class AuthService:
         self.user_service = user_service
 
     @staticmethod
-    def convert_user_password_to_hash(data) -> dict:
+    def convert_user_password_to_hash(data: dict) -> dict:
         """
         Method to  convert str password to hash password
         :param data: dict with email and password

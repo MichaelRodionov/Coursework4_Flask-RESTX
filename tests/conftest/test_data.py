@@ -1,5 +1,4 @@
-from app.dao.models.models import Movie, Genre, Director
-
+from app.dao.models.models import Movie, Genre, Director, User
 
 # ----------------------------------------------------------------
 # Movies data
@@ -93,26 +92,32 @@ DIRECTOR_BY_ID = Director(
 
 # ----------------------------------------------------------------
 # Users data
-USER_PAGE = {
-    "name": "test_user_name",
-    "surname": "test_user_surname",
-    "email": "test_user_email",
-    "favorite_genre": "test_user_favorite_genre"
-}
+USER_PAGE = User(
+    name='test_user_name',
+    surname='test_user_surname',
+    email='test_user_email',
+    favorite_genre='test_user_favorite_genre'
+)
 
-USER_BY_EMAIL = {
-    "id": 1,
-    "name": "test_user_name",
-    "surname": "test_user_surname",
-    "email": "test_user_email",
-    "favorite_genre": "test_user_favorite_genre",
-    "password": "test_user_password"
-}
+TEST_EMAIL = 'test_email@mail.ru'
+
+USER_BY_EMAIL = User(
+    id=1,
+    name='test_user_name',
+    surname='test_user_surname',
+    email='test_email@mail.ru',
+    favorite_genre='test_user_favorite_genre',
+    password='test_user_password'
+)
 
 # ----------------------------------------------------------------
-# Favorites data
-ALL_FAVORITES = [
-    {
+# secure data
+TEST_PASSWORD = 'Qwerty12!'
+TEST_PASSWORD_HASH = b'WD5xanKSokDvAta3wFNBofA/wIKNMwaLNpg08tYTRwM='
 
-    }
-]
+# ----------------------------------------------------------------
+# auth data
+AUTH_DATA = {
+    'email': 'test_email@mail.ru',
+    'password': 'Qwerty12!'
+}

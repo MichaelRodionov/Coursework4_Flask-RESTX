@@ -1,3 +1,4 @@
+from app.dao.models.models import User
 from app.dao.user_dao import UserDAO
 from app.services.secure_service import SecureService
 
@@ -12,12 +13,16 @@ secure_service = SecureService()
 class UserService:
     """Service is needed to work with users views and UserDAO"""
     def __init__(self, user_dao: UserDAO):
+        """
+
+        :rtype: object
+        """
         self.user_dao = user_dao
 
-    def get_user_page(self):
+    def get_user_page(self) -> User:
         """
         Method to get user data with available attributes
-        :return: User with available attributes
+        :return: User object with available attributes
         """
         user_email = secure_service.get_email_or_id_from_token(is_email=True)
         return self.user_dao.get_user_page(user_email)
@@ -30,11 +35,11 @@ class UserService:
         """
         self.user_dao.create_user(data)
 
-    def get_user_by_email(self, email: str):
+    def get_user_by_email(self, email: str) -> User:
         """
         Method to filter user by email
         :param email: user email
-        :return: User filtered by email
+        :return: User object filtered by email
         """
         return self.user_dao.get_user_by_email(email)
 

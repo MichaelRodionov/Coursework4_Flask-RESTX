@@ -14,8 +14,11 @@ auth_ns = Namespace('auth')
 @auth_ns.route('/register')
 class AuthViewsRegister(Resource):
     @staticmethod
+    @auth_ns.doc(description='Register new user', responses={201: 'Created'})
     def post() -> str:
-        """This view is needed to register user in system"""
+        """
+        This view is needed to register user in system
+        """
         try:
             data = request.json
             user = auth_service.convert_user_password_to_hash(data)
@@ -28,8 +31,12 @@ class AuthViewsRegister(Resource):
 @auth_ns.route('/login')
 class AuthViewsLogin(Resource):
     @staticmethod
+    @auth_ns.doc(description='Log in user', responses={201: 'No Content', 400: 'Bad Request', 401: 'Unauthorized'})
     def post() -> str or dict:
-        """This view is needed to users log in"""
+        """
+        This view is needed to users log in
+        :return: Authorization tokens (access token and refresh token)
+        """
         data = request.json
         email, password = data.get('email'), data.get('password')
         if None in [email, password]:
@@ -37,9 +44,14 @@ class AuthViewsLogin(Resource):
         return auth_service.generate_tokens(email, password), 201
 
     @staticmethod
+    @auth_ns.doc(description='Update tokens', responses={204: 'No Content', 400: 'Bad Request', 401: 'Unauthorized',
+                                                         404: 'Not Found'})
     @auth_required
     def put() -> dict:
-        """This view is needed to update tokens"""
+        """
+        This view is needed to update tokens
+        :return: Updated authorization tokens (access token and refresh token)
+        """
         data = request.json
         token = data.get('refresh_token')
         tokens = auth_service.approve_refresh_token(token)

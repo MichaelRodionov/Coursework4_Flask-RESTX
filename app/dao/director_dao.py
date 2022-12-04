@@ -1,4 +1,5 @@
 from app.dao.models.models import Director
+from constants import LIMIT_VALUE, OFFSET_VALUE
 
 
 # ----------------------------------------------------------------
@@ -7,15 +8,17 @@ class DirectorDAO:
     def __init__(self, session):
         self.session = session
 
-    def get_all_directors(self):
+    def get_all_directors(self, page=None) -> list:
         """
         Method to query all directors from database
         :return: all directors to DirectorService
         """
-        directors = self.session.query(Director).all()
-        return directors
+        directors_query = self.session.query(Director)
+        if page and page > 0:
+            directors_query = directors_query.limit(LIMIT_VALUE).offset(OFFSET_VALUE * (page - 1))
+        return directors_query.all()
 
-    def get_director_by_id(self, director_id: int):
+    def get_director_by_id(self, director_id: int) -> Director:
         """
         Method to query director from database by director id
         :param director_id:

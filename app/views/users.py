@@ -17,12 +17,15 @@ user_schema = UserSchema()
 @user_ns.route('/')
 class UserView(Resource):
     @staticmethod
+    @user_ns.doc(description='Get user page', responses={200: 'OK', 401: 'Unauthorized'})
     @auth_required
     def get() -> dict:
         """This view is needed to get user page with available attributes"""
-        return user_schema.dump(user_service.get_user_page()), 200
+        user = user_service.get_user_page()
+        return user_schema.dump(user), 200
 
     @staticmethod
+    @user_ns.doc(description='Update user info', responses={204: 'No Content', 401: 'Unauthorized'})
     @auth_required
     def patch() -> None:
         """This view is needed to update user info, such as name, surname, favorite genre"""
@@ -31,6 +34,7 @@ class UserView(Resource):
         return "", 204
 
     @staticmethod
+    @user_ns.doc(description='Update user password', responses={204: 'No Content', 401: 'Unauthorized'})
     @auth_required
     def put() -> None:
         """This view is needed to update user password"""

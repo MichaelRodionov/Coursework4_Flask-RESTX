@@ -8,7 +8,7 @@ class FavoriteService:
     def __init__(self, favorite_dao: FavoriteDAO):
         self.fav_dao = favorite_dao
 
-    def get_favorites(self) -> list[dict]:
+    def get_favorites(self) -> list:
         """
         Method to get user_id from token and send it to favorite dao
         :return: list of favorite movies filtered by user id

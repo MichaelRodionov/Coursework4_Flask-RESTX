@@ -7,7 +7,7 @@ class UserDAO:
     def __init__(self, session):
         self.session = session
 
-    def get_user_page(self, email: str):
+    def get_user_page(self, email: str) -> User:
         """
         Method to query available user info from database
         :param email:
@@ -15,7 +15,7 @@ class UserDAO:
         """
         return self.session.query(User.name, User.surname, User.email, User.favorite_genre).filter(User.email == email).first()
 
-    def get_user_by_email(self, email: str):
+    def get_user_by_email(self, email: str) -> User:
         """
         Method to query user by username
         :param email:

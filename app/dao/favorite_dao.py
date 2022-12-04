@@ -7,7 +7,7 @@ class FavoriteDAO:
     def __init__(self, session):
         self.session = session
 
-    def get_all_favorites(self, uid: int) -> list[dict]:
+    def get_all_favorites(self, uid: int) -> list:
         """
         Method to query all favorites of user
         :param uid: user id

@@ -11,8 +11,7 @@ from app.views.genres import genre_ns
 from app.views.movies import movie_ns
 from app.views.users import user_ns
 
-
-api = Api(title="Flask-RESTX_Coursework4", doc="/docs")
+api = Api()
 
 
 # ----------------------------------------------------------------

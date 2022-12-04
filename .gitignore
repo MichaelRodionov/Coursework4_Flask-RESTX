@@ -1,3 +1,5 @@
 /venv/
 /package-lock.json
 *.idea
+/.pytest_cache/
+/tests/.pytest_cache/
