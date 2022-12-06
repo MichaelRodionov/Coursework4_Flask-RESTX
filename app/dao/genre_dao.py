@@ -15,8 +15,8 @@ class GenreDAO:
         :return: all genres to GenreService
         """
         genres_query = self.session.query(Genre)
-        if page and page > 0:
-            genres_query = genres_query.limit(LIMIT_VALUE).offset(OFFSET_VALUE * (page - 1))
+        if page and int(page) > 0:
+            genres_query = genres_query.limit(LIMIT_VALUE).offset(OFFSET_VALUE * (int(page) - 1))
         return genres_query.all()
 
     def get_genre_by_id(self, genre_id: int) -> Genre:

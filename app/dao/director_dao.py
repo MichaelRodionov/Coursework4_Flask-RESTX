@@ -14,8 +14,8 @@ class DirectorDAO:
         :return: all directors to DirectorService
         """
         directors_query = self.session.query(Director)
-        if page and page > 0:
-            directors_query = directors_query.limit(LIMIT_VALUE).offset(OFFSET_VALUE * (page - 1))
+        if page and int(page) > 0:
+            directors_query = directors_query.limit(LIMIT_VALUE).offset(OFFSET_VALUE * (int(page) - 1))
         return directors_query.all()
 
     def get_director_by_id(self, director_id: int) -> Director:

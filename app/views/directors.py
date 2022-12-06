@@ -21,13 +21,13 @@ class DirectorsView(Resource):
     @director_ns.doc(description='Get all directors', params={'page': 'Page number'}, responses={200: 'OK',
                                                                                                  401: 'Unauthorized'})
     @auth_required
-    def get() -> list[dict]:
+    def get() -> list:
         """This view return all directors by GET request"""
-        page = int(request.args.get('page'))
+        page = request.args.get('page')
         return directors_schema.dump(director_service.get_directors(page)), 200
 
 
-@director_ns.route('/<int:director_id>')
+@director_ns.route('/<int:director_id>/')
 class DirectorView(Resource):
     @staticmethod
     @director_ns.doc(description='Get one genre', params={'director_id': 'Director ID'}, responses={200: 'OK',

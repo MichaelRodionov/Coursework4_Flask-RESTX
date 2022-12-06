@@ -21,13 +21,13 @@ class GenresView(Resource):
     @genre_ns.doc(description='Get all genres', params={'page': 'Page number'}, responses={200: 'OK',
                                                                                            401: 'Unauthorized'})
     @auth_required
-    def get() -> list[dict]:
+    def get() -> list:
         """This view return all genres by GET request"""
-        page = int(request.args.get('page'))
+        page = request.args.get('page')
         return genres_schema.dump(genre_service.get_genres(page)), 200
 
 
-@genre_ns.route('/<int:genre_id>')
+@genre_ns.route('/<int:genre_id>/')
 class GenreView(Resource):
     @staticmethod
     @genre_ns.doc(description='Get one genre', params={'genre_id': 'Genre ID'}, responses={200: 'OK',

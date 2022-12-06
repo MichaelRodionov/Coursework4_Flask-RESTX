@@ -22,7 +22,7 @@ class FavoritesViews(Resource):
         return movies_schema.dump(favorite_service.get_favorites()), 200
 
 
-@fav_ns.route('/<int:mid>')
+@fav_ns.route('/<int:mid>/')
 class FavoriteViews(Resource):
     @staticmethod
     @fav_ns.doc(description='Add movie to users favorites', params={'mid': 'Movie ID'}, responses={201: 'No Content', 401: 'Unauthorized'})

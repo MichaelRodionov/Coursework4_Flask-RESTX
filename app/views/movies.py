@@ -33,7 +33,7 @@ class MoviesView(Resource):
         return movies_schema.dump(movie_service.get_movies(filter_params)), 200
 
 
-@movie_ns.route('/<int:movie_id>')
+@movie_ns.route('/<int:movie_id>/')
 class MovieView(Resource):
     @staticmethod
     @movie_ns.doc(description='Get one movie', params={'movie_id': 'Movie ID'}, responses={200: 'OK',

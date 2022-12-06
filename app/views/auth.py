@@ -11,7 +11,7 @@ auth_ns = Namespace('auth')
 
 # ----------------------------------------------------------------
 # views to handle auth requests
-@auth_ns.route('/register')
+@auth_ns.route('/register/')
 class AuthViewsRegister(Resource):
     @staticmethod
     @auth_ns.doc(description='Register new user', responses={201: 'Created'})
@@ -28,7 +28,7 @@ class AuthViewsRegister(Resource):
             return 'user with this email address is already exists'
 
 
-@auth_ns.route('/login')
+@auth_ns.route('/login/')
 class AuthViewsLogin(Resource):
     @staticmethod
     @auth_ns.doc(description='Log in user', responses={201: 'No Content', 400: 'Bad Request', 401: 'Unauthorized'})

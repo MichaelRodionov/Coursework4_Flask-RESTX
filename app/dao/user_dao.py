@@ -33,10 +33,11 @@ class UserDAO:
         self.session.add(user)
         self.session.commit()
 
-    def update_user(self, user) -> None:
+    def update_user(self, data, email) -> None:
         """
         Method to overwrite user with updated attributes
-        :param user:
+        :param data:
+        :param email
         """
-        self.session.add(user)
+        self.session.query(User).filter(User.email == email).update(data)
         self.session.commit()

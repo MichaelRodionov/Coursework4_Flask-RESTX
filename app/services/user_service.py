@@ -49,14 +49,14 @@ class UserService:
         :param data: dict with name/surname/favorite_genre
         :return: None
         """
-        user = self.user_dao.get_user_by_email(secure_service.get_email_or_id_from_token(is_email=True))
-        if "name" in data:
-            user.name = data.get("name")
-        if "surname" in data:
-            user.surname = data.get("surname")
-        if "favorite_genre" in data:
-            user.favorite_genre = data.get("favorite_genre")
-        self.user_dao.update_user(user)
+        user_email = secure_service.get_email_or_id_from_token(is_email=True)
+        #if "name" in data:
+            #user.name = data.get("name")
+        #if "surname" in data:
+            #user.surname = data.get("surname")
+        #if "favorite_genre" in data:
+            #user.favorite_genre = data.get("favorite_genre")
+        self.user_dao.update_user(data, user_email)
 
     def update_password(self, passwords: dict) -> str or None:
         """
@@ -64,9 +64,10 @@ class UserService:
         :param passwords:
         :return: None
         """
-        password_1, password_2 = passwords.get("password_1"), passwords.get("password_2")
-        user = self.get_user_by_email(secure_service.get_email_or_id_from_token(is_email=True))
+        password_1, password_2 = passwords.get("old_password"), passwords.get("new_password")
+        user_email = secure_service.get_email_or_id_from_token(is_email=True)
+        user = self.get_user_by_email(user_email)
         if not secure_service.compare_passwords(user.password, password_1):
             return "Incorrect password", 400
-        user.password = secure_service.make_user_password_hash(password_2)
-        self.user_dao.update_user(user)
+        data = {'password': secure_service.make_user_password_hash(password_2)}
+        self.user_dao.update_user(data, user_email)
