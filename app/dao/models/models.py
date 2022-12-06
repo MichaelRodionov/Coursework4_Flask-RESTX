@@ -83,6 +83,7 @@ class UserSchema(Schema):
 # ----------------------------------------------------------------
 # Favorite model
 class Favorite(db.Model):
+    __tablename__ = 'favorite'
     id = db.Column(db.Integer(), primary_key=True)
     movie_id = db.Column(db.Integer, db.ForeignKey('movie.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
