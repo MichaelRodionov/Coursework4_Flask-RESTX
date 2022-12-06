@@ -13,7 +13,7 @@ class UserDAO:
         :param email:
         :return: User with name, surname, email, favorite_genre attributes
         """
-        return self.session.query(User.name, User.surname, User.email, User.favorite_genre).filter(User.email == email).first()
+        return self.session.query(User.name, User.surname, User.email, User.favourite_genre).filter(User.email == email).first()
 
     def get_user_by_email(self, email: str) -> User:
         """

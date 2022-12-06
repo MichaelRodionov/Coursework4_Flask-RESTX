@@ -50,12 +50,6 @@ class UserService:
         :return: None
         """
         user_email = secure_service.get_email_or_id_from_token(is_email=True)
-        #if "name" in data:
-            #user.name = data.get("name")
-        #if "surname" in data:
-            #user.surname = data.get("surname")
-        #if "favorite_genre" in data:
-            #user.favorite_genre = data.get("favorite_genre")
         self.user_dao.update_user(data, user_email)
 
     def update_password(self, passwords: dict) -> str or None:

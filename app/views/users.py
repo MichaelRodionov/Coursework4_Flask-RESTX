@@ -30,6 +30,7 @@ class UserView(Resource):
     def patch() -> None:
         """This view is needed to update user info, such as name, surname, favorite genre"""
         data = user_schema.dump(request.json)
+        print(data)
         user_service.update_user(data)
         return "", 204
 

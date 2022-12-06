@@ -12,6 +12,7 @@ from app.views.movies import movie_ns
 from app.views.users import user_ns
 
 api = Api()
+cors = CORS()
 
 
 # ----------------------------------------------------------------
@@ -23,6 +24,7 @@ def create_app(config_object: Config):
     :return: Flask application
     """
     app = Flask(__name__)
+    cors.init_app(app)
     app.config.from_object(config_object)
     register_extensions(app)
     return app
@@ -34,7 +36,7 @@ def register_extensions(app: Flask):
     :param app: Flask application
     """
     db.init_app(app)
-    CORS(app)
+
     api.init_app(app)
     api.add_namespace(movie_ns)
     api.add_namespace(director_ns)
